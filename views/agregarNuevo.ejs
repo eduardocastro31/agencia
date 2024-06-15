@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") -%>
+
+<div class="container mt-3">
+  <form action="http://localhost:3000/creado" id="form" method="post">
+    <fieldset>
+      <legend><h1>Ingresar empleado:</h1></legend>
+      <p>
+        <label for="profesion" class="form-label"
+          >Profesion:
+          <input id="profesion" class="form-control" type="text" name="profesion"
+        /></label>
+      </p>
+      <p>
+        <label class="form-label"
+          >Remuneracion: <input class="form-control" type="number" name="remu"
+        /></label>
+      </p>
+      <p>
+        <label class="form-label"
+          >Destacado:
+          <select class="form-select" name="des">
+            <option value="true">SI</option>
+            <option value="false">NO</option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <input
+          type="submit"
+          class="btn btn-primary"
+          id="submit"
+          name="submit"
+          value="Agregar Empleado"
+        />
+      </p>
+    </fieldset>
+  </form>
+</div>
+<Script>
+  var profesion = document.getElementById("profesion"); var submit =
+  document.getElementById("submit"); var form = document.querySelector("form");
+  submit.addEventListener("click", function () { prof = profesion.value;
+  if(prof==""){ alert("Rellene los campos"); form.reset();
+  form.action="http://localhost:3000/nuevo"; form.method="get"; } })
+</Script>
+
+<%- include("partials/footer.ejs")-%>

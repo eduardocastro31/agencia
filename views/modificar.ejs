@@ -1,0 +1,95 @@
+<%- include("partials/header.ejs") -%>
+  <fieldset id="tabla">
+    <legend class="ms-3">Modificar:</legend>
+    <table id="otro" class="table table-hover">
+      <tr class="table-dark">
+        <th>Profesion</th>
+        <th>Id empleado</th>
+        <th>Empleado destacado:</th>
+        <th>Remuneracion:</th>
+      </tr>
+      <tr>
+        <td>
+          <%= perso.profesion.replace(/\b\w/g, l=> l.toUpperCase()).replace("_"," ") %>
+        </td>
+        <td>
+          <%= perso.userId%>
+        </td>
+        <% if(perso.destacado==true) { %>
+          <td>Si</td>
+          <% } else { %>
+            <td>No</td>
+            <% } %>
+              <td>
+                <%= perso.remuneracion%> U$D
+              </td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <fieldset id="tabla">
+    <legend class="ms-3">Nuevos Datos:</legend>
+    <table id="otro" class="table table-hover">
+      <tr class="table-dark">
+        <th>Profesion</th>
+        <th>Id empleado</th>
+        <th>Empleado destacado:</th>
+        <th>Remuneracion:</th>
+      </tr>
+      <tr>
+        <form action="http://localhost:3000/peso" method="put" id="form">
+          <fieldset>
+            <td><label for="profesion" class="form-label"><input id="profesion" class="form-control" type="text"
+                  name="profesi" /></label></td>
+            <td name="id">
+              <%= perso.userId %>
+            </td>
+            <td>
+
+              <select id="des" class="form-select" name="des">
+                <option value="true"> SI</option>
+                <option value="false">NO</option>
+              </select>
+
+            </td>
+
+            <td><label for="remuneracion" class="form-label"><input id="remuneracion" class="form-control" type="number"
+                  name="remuneracion" /></label>
+              U$D</td>
+
+          </fieldset>
+        </form>
+      </tr>
+    </table>
+  </fieldset>
+
+  <a href="/modificar" class="ms-5"><button class="btn btn-danger ">Cancelar</button></a>
+  <a class="ms-4" onclick="data('<%= perso.userId %>')" href="/modificar"><button class="btn btn-success ">Guardar
+      Cambios</button></a>
+
+  <script>
+    const valor = document.getElementById("des");
+    const profes = document.getElementById("profesion");
+    const remunera = document.getElementById("remuneracion");
+
+    async function data(id) {
+      nval = valor.value
+      profesi = profes.value;
+      remunerado = remunera.value;
+
+      console.log("El valor es ", profesi)
+
+      fetch("http://localhost:3000/" + id + "/" + nval + "/" + profesi + "/" + remunerado, {
+        method: "PUT",
+        body: id, nval, profesi, remunerado
+
+      })
+        .then((response) => console.log("Success:", response));
+
+      alert("CAMBIOS GUARDADOS CON EXITO");
+
+    }
+
+  </script>
+
+  <%- include("partials/footer.ejs")-%>

@@ -1,0 +1,39 @@
+body{
+  padding: 0;
+  margin: 0;
+
+}
+
+#tabla{
+  display: flex;
+  flex-direction: column;
+}
+#otro{
+  border-collapse: inherit;
+  padding: 20px 35px 30px 35px;
+}
+
+header{
+   background-color: cadetblue;
+}
+  header{
+    height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  footer {
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+  }
+
+#inicio{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 50px;
+}

@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") -%>
+
+<fieldset id="tabla">
+  <legend class="ms-3"><h3>Empleados :</h3></legend>
+  <table id="otro" class="table table-hover">
+    <tr class="table-dark">
+      <th>Profesion</th>
+      <th>Id empleado</th>
+      <th>Empleado destacado:</th>
+      <th>Remuneracion:</th>
+    </tr>
+    <% for(i = 0; i < persoas.length; i++) { %>
+    <tr id="user_<%= persoas[i].userId%>">
+      <td class="pe-4">
+        <%= persoas[i].profesion.replace(/\b\w/g, l =>
+        l.toUpperCase()).replace("_"," ")%>
+      </td>
+      <td><%= persoas[i].userId%></td>
+      <% if(persoas[i].destacado == true) { %>
+      <td>Si</td>
+      <% } else { %>
+      <td>No</td>
+      <% } %>
+      <td><%= persoas[i].remuneracion%> U$D</td>
+    </tr>
+    <% } %>
+  </table>
+</fieldset>
+
+<%- include("partials/footer.ejs") -%>

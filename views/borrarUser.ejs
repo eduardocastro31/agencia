@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs") -%>
+<fieldset id="tabla">
+  <legend>Empleados :</legend>
+  <table id="otro" class="table table table-striped">
+    <tr class="table-dark">
+      <th>Profesion</th>
+      <th>Id empleado</th>
+      <th>Empleado destacado:</th>
+      <th>Remuneracion:</th>
+    </tr>
+    <% for(i = 0; i < persoas.length; i++) { %>
+    <tr class="" id="user_<%= persoas[i].userId%>">
+      <td class="pe-4">
+        <%= persoas[i].profesion.replace(/\b\w/g, l =>
+        l.toUpperCase()).replace("_"," ")%>
+      </td>
+      <td><%= persoas[i].userId%></td>
+      <% if(persoas[i].destacado == true) { %>
+      <td>Si</td>
+      <% } else { %>
+      <td>No</td>
+      <% } %>
+      <td><%= persoas[i].remuneracion%> U$D</td>
+      <td class="badge text-bg text-wrap">
+        <button
+          class="btn ms-2 btn-danger"
+          onclick="eliminarEmpleado('<%= persoas[i].userId %>')"
+        >
+          Eliminar
+        </button>
+        <a href="/modificar/<%= persoas[i].userId %>"
+          ><button class="btn ms-3 btn-primary">Cambiar Datos</button>
+        </a>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+</fieldset>
+
+<script>
+  async function eliminarEmpleado(id) {
+    var quit = document.getElementById("user_" + id);
+
+    console.log("user_", id);
+
+    fetch("http://localhost:3000/user/" + id, {
+      method: "DELETE",
+      body: id,
+    }).then((response) => console.log("Success:", response));
+    quit.remove();
+  }
+</script>
+<%- include("partials/footer.ejs") -%>
