@@ -25,7 +25,7 @@ async function run() {
      // Conecta el cliente al servidor
      await client.connect();
      // Envia un ping para confirmar una conexión exitosa
-     await client.db("admin").command({ ping: 1 });
+   //  await client.db("admin").command({ ping: 1 });
      console.log("Conexion a MongoDB exitosa !");
    }
    catch(error){
