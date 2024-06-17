@@ -31,7 +31,7 @@ async function run() {
    catch(error){
       // Asegura que el cliente se cerrará cuando de error
       await client.close()
-     console.log("No se pudo conectar al servidor")
+     console.log("No se pudo conectar al servidor por el error: ",error)
     }}
    run();
 
