@@ -43,7 +43,7 @@
 
     console.log("user_", id);
 
-    fetch("http://localhost:3000/user/" + id, {
+    fetch("/user/" + id, {
       method: "DELETE",
       body: id,
     }).then((response) => console.log("Success:", response));

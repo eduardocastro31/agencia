@@ -37,6 +37,7 @@ async function run() {
    catch(error){
       // Asegura que el cliente se cerrará cuando de error
       await client.close()
+     console.log("No se pudo conectar al servidor, error: ",error)
     }}
    run();
 
@@ -122,4 +123,7 @@ app.put(url+":id/:nval/:profesi/:remunerado", async (req, res)=>{
 });
 
 app.listen(PORT);
+
+console.log("Escuchando en puerto "+PORT);
+
 console.log("Escuchando en puerto "+PORT);
