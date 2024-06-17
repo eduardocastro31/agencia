@@ -15,6 +15,7 @@ const personas = bd.collection("personas");
 const path = require("path");
 const ejs = require("ejs");
 const url = "/";
+const PORT = process.env.PORT;
 
 app.use(express.text());
 app.use(express.json());
@@ -115,14 +116,10 @@ app.put(url+":id/:nval/:profesi/:remunerado", async (req, res)=>{
       valor = false;
 
    await personas.updateOne({ userId: parseInt(req.params.id) }, 
-   { $set: { destacado: Boolean (valor) } });
-   await personas.updateOne({ userId: parseInt(req.params.id) }, 
-   { $set: { profesion: req.params.profesi } }); 
-   await personas.updateOne({ userId: parseInt(req.params.id) }, 
-   { $set: { remuneracion: parseInt(req.params.remunerado) } }); 
+   { $set: { destacado: Boolean (valor), profesion: req.params.profesi,remuneracion: parseInt(req.params.remunerado)} });
 
    res.render("creado", {});
 });
 
-app.listen(3000);
-console.log("Escuchando en puerto 3000");
+app.listen(PORT);
+console.log("Escuchando en puerto "+PORT);
