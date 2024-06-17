@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") -%>
 
 <div class="container mt-3">
-  <form action="http://localhost:3000/creado" id="form" method="post">
+  <form action="/creado" id="form" method="post">
     <fieldset>
       <legend><h1>Ingresar empleado:</h1></legend>
       <p>
@@ -41,7 +41,7 @@
   document.getElementById("submit"); var form = document.querySelector("form");
   submit.addEventListener("click", function () { prof = profesion.value;
   if(prof==""){ alert("Rellene los campos"); form.reset();
-  form.action="http://localhost:3000/nuevo"; form.method="get"; } })
+  form.action="/nuevo"; form.method="get"; } })
 </Script>
 
 <%- include("partials/footer.ejs")-%>
