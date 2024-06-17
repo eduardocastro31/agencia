@@ -2,8 +2,14 @@ const {MongoClient, ServerApiVersion, Int32} = require("mongodb");
 const express= require("express");
 const app = express();
 const { MONGODB_USR, MONGODB_PWD } =  require("./config.js");
-const uri = "mongodb+srv://"+MONGODB_USR+":"+MONGODB_PWD+"@bd.m0u45gc.mongodb.net/?retryWrites=true&w=majority&appName=bd"
-const client = new MongoClient(uri);
+const uri = "mongodb+srv://eduardo_castro:Kenchi-3107@bd.m0u45gc.mongodb.net/?retryWrites=true&w=majority&appName=bd"
+const client = new MongoClient(uri, {
+  serverApi: {
+   version: ServerApiVersion.v1,
+   strict: true,
+   deprecationErrors: true,
+  },
+});
 const bd = client.db("basedatos");
 const personas = bd.collection("personas");
 const path = require("path");
@@ -120,5 +126,5 @@ app.put(url+":id/:nval/:profesi/:remunerado", async (req, res)=>{
    res.render("creado", {});
 });
 
-app.listen(PORT);
-console.log("Escuchando en puerto"+PORT);
+app.listen(uri);
+console.log("Escuchando en puerto "+PORT);
