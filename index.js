@@ -3,13 +3,7 @@ const express= require("express");
 const app = express();
 const { MONGODB_USR, MONGODB_PWD } =  require("./config.js");
 const uri = "mongodb+srv://eduardo_castro:Kenchi-3107@bd.m0u45gc.mongodb.net/?retryWrites=true&w=majority&appName=bd"
-const client = new MongoClient(uri, {
-  serverApi: {
-   version: ServerApiVersion.v1,
-   strict: true,
-   deprecationErrors: true,
-  },
-});
+const client = new MongoClient(uri);
 const bd = client.db("basedatos");
 const personas = bd.collection("personas");
 const path = require("path");
