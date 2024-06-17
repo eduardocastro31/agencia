@@ -120,5 +120,5 @@ app.put(url+":id/:nval/:profesi/:remunerado", async (req, res)=>{
    res.render("creado", {});
 });
 
-app.listen(uri);
+app.listen(PORT);
 console.log("Escuchando en puerto "+PORT);
