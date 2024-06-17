@@ -37,7 +37,7 @@
         <th>Remuneracion:</th>
       </tr>
       <tr>
-        <form action="http://localhost:3000/peso" method="put" id="form">
+        <form action="/peso" method="put" id="form">
           <fieldset>
             <td><label for="profesion" class="form-label"><input id="profesion" class="form-control" type="text"
                   name="profesi" /></label></td>
@@ -79,7 +79,7 @@
 
       console.log("El valor es ", profesi)
 
-      fetch("http://localhost:3000/" + id + "/" + nval + "/" + profesi + "/" + remunerado, {
+      fetch("/" + id + "/" + nval + "/" + profesi + "/" + remunerado, {
         method: "PUT",
         body: id, nval, profesi, remunerado
 
